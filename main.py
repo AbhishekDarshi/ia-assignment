@@ -2,6 +2,16 @@ from functools import lru_cache
 
 
 def solution(total_days, max_absent_days):
+    """
+    args: 
+        total_days: int 
+            total days available to attend classes
+        max_absent_days: int
+            maximum days a person can be absent continuosly
+
+    return:
+        string
+    """
 
     total_ways = get_valid_ways(total_days, 0, max_absent_days)
     miss_grad = get_valid_ways(total_days - 1, 1, max_absent_days)
@@ -11,6 +21,18 @@ def solution(total_days, max_absent_days):
 
 @lru_cache(None)
 def get_valid_ways(total_days, cur_absent_days, max_absent_days):
+    """
+    args:
+        total_days: int 
+            total days available to attend classes
+        cur_absent_days:int
+            current number of days, the person is absent
+        max_absent_days: int
+            maximum days a person can be absent continuosly
+
+    return:
+        int
+    """
 
     if max_absent_days == cur_absent_days:
         return 0
